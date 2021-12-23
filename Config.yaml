@@ -98,4 +98,3 @@ rules:
   - IP-CIDR,fe80::/10,DIRECT
   
   - MATCH,Final
-  
