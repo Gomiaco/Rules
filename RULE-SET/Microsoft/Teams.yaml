@@ -4,4 +4,4 @@ payload:
   - DOMAIN-SUFFIX,teams.live.com
   - DOMAIN-SUFFIX,teams.microsoft.com
   - DOMAIN,teams.events.data.microsoft.com
-  # DOMAIN,statics.teams.cdn.office.net
+  - DOMAIN,statics.teams.cdn.office.net
