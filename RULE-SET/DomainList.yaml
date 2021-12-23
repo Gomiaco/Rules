@@ -279,6 +279,8 @@ payload:
   - DOMAIN-SUFFIX,live.com
   - DOMAIN-SUFFIX,live.net
   - DOMAIN-SUFFIX,lync.com
+  - DOMAIN-SUFFIX,microsoft.com
+  - DOMAIN-SUFFIX,microsoftonline.com
   - DOMAIN-SUFFIX,msappproxy.net
   - DOMAIN-SUFFIX,msauth.net
   - DOMAIN-SUFFIX,msauthimages.net
@@ -331,12 +333,6 @@ payload:
   - DOMAIN-SUFFIX,wunderlist.com
   - DOMAIN-SUFFIX,yammer.com
   - DOMAIN-SUFFIX,yammerusercontent.com
-  
-  - DOMAIN-SUFFIX,teams.cdn.live.net
-  - DOMAIN-SUFFIX,teams.live.com
-  - DOMAIN-SUFFIX,teams.microsoft.com
-  - DOMAIN,teams.events.data.microsoft.com
-  - DOMAIN,statics.teams.cdn.office.net
 
 # MGTV 芒果TV
   - DOMAIN-SUFFIX,hitv.com
