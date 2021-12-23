@@ -43,8 +43,6 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
-      - HK
-      - TW
       - Final
       
   - name: ALL
