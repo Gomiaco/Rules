@@ -39,7 +39,7 @@
   - DOMAIN-KEYWORD,vpimg
   - DOMAIN-KEYWORD,xiami
   - DOMAIN-KEYWORD,xiaomi
-
+  
 # 360
   - DOMAIN-SUFFIX,360.com
   - DOMAIN-SUFFIX,360kuai.com
@@ -111,23 +111,34 @@
   - DOMAIN-SUFFIX,jomodns.com
   - DOMAIN-SUFFIX,yunjiasu-cdn.net
 
-# Bilibili
-  - DOMAIN-SUFFIX,acg.tv
-  - DOMAIN-SUFFIX,acgvideo.com
-  - DOMAIN-SUFFIX,b23.tv
-  - DOMAIN-SUFFIX,bigfun.cn
-  - DOMAIN-SUFFIX,bigfunapp.cn
-  - DOMAIN-SUFFIX,biliapi.com
-  - DOMAIN-SUFFIX,biliapi.net
-  - DOMAIN-SUFFIX,bilibili.com
-  - DOMAIN-SUFFIX,bilibili.tv
-  - DOMAIN-SUFFIX,biligame.com
-  - DOMAIN-SUFFIX,biligame.net
-  - DOMAIN-SUFFIX,bilivideo.com
-  - DOMAIN-SUFFIX,bilivideo.cn
-  - DOMAIN-SUFFIX,hdslb.com
-  - DOMAIN-SUFFIX,im9.com
-  - DOMAIN-SUFFIX,smtcdns.net
+# Apple
+  - DOMAIN,apple.comscoreresearch.com
+  - DOMAIN-SUFFIX,aaplimg.com
+  - DOMAIN-SUFFIX,akadns.net
+  - DOMAIN-SUFFIX,apple-cloudkit.com
+  - DOMAIN-SUFFIX,apple.co
+  - DOMAIN-SUFFIX,apple.com
+  - DOMAIN-SUFFIX,apple.com.cn
+  - DOMAIN-SUFFIX,apple.news
+  - DOMAIN-SUFFIX,appstore.com
+  - DOMAIN-SUFFIX,cdn-apple.com
+  - DOMAIN-SUFFIX,crashlytics.com
+  - DOMAIN-SUFFIX,icloud-content.com
+  - DOMAIN-SUFFIX,icloud.com
+  - DOMAIN-SUFFIX,icloud.com.cn
+  - DOMAIN-SUFFIX,itunes.com
+  - DOMAIN-SUFFIX,me.com
+  - DOMAIN-SUFFIX,mzstatic.com
+  - IP-CIDR,17.0.0.0/8,no-resolve
+  - IP-CIDR,63.92.224.0/19,no-resolve
+  - IP-CIDR,65.199.22.0/23,no-resolve
+  - IP-CIDR,139.178.128.0/18,no-resolve
+  - IP-CIDR,144.178.0.0/19,no-resolve
+  - IP-CIDR,144.178.36.0/22,no-resolve
+  - IP-CIDR,144.178.48.0/20,no-resolve
+  - IP-CIDR,192.35.50.0/24,no-resolve
+  - IP-CIDR,198.183.17.0/24,no-resolve
+  - IP-CIDR,205.180.175.0/24,no-resolve
 
 # Blizzard
   - DOMAIN-SUFFIX,battle.net
@@ -245,6 +256,87 @@
   - DOMAIN-SUFFIX,letvimg.com
   - DOMAIN-SUFFIX,letvlive.com
   - DOMAIN-SUFFIX,letvstore.com
+  
+# Microsoft
+  - PROCESS-NAME,OneDrive
+  - DOMAIN-SUFFIX,aadrm.com
+  - DOMAIN-SUFFIX,acompli.com
+  - DOMAIN-SUFFIX,acompli.ne
+  - DOMAIN-SUFFIX,aka.ms
+  - DOMAIN-SUFFIX,akadns.net
+  - DOMAIN-SUFFIX,aspnetcdn.com
+  - DOMAIN-SUFFIX,assets-yammer.com
+  - DOMAIN-SUFFIX,azure.com
+  - DOMAIN-SUFFIX,azure.net
+  - DOMAIN-SUFFIX,azureedge.net
+  - DOMAIN-SUFFIX,azurerms.com
+  - DOMAIN-SUFFIX,bing.com
+  - DOMAIN-SUFFIX,cloudapp.net
+  - DOMAIN-SUFFIX,cloudappsecurity.com
+  - DOMAIN-SUFFIX,edgesuite.net
+  - DOMAIN-SUFFIX,gfx.ms
+  - DOMAIN-SUFFIX,hotmail.com
+  - DOMAIN-SUFFIX,live.com
+  - DOMAIN-SUFFIX,live.net
+  - DOMAIN-SUFFIX,lync.com
+  - DOMAIN-SUFFIX,msappproxy.net
+  - DOMAIN-SUFFIX,msauth.net
+  - DOMAIN-SUFFIX,msauthimages.net
+  - DOMAIN-SUFFIX,msecnd.net
+  - DOMAIN-SUFFIX,msedge.net
+  - DOMAIN-SUFFIX,msft.net
+  - DOMAIN-SUFFIX,msftauth.net
+  - DOMAIN-SUFFIX,msftauthimages.net
+  - DOMAIN-SUFFIX,msftidentity.com
+  - DOMAIN-SUFFIX,msidentity.com
+  - DOMAIN-SUFFIX,msn.cn
+  - DOMAIN-SUFFIX,msn.com
+  - DOMAIN-SUFFIX,msocdn.com
+  - DOMAIN-SUFFIX,msocsp.com
+  - DOMAIN-SUFFIX,mstea.ms
+  - DOMAIN-SUFFIX,o365weve.com
+  - DOMAIN-SUFFIX,oaspapps.com
+  - DOMAIN-SUFFIX,office.com
+  - DOMAIN-SUFFIX,office.net
+  - DOMAIN-SUFFIX,office365.com
+  - DOMAIN-SUFFIX,officeppe.net
+  - DOMAIN-SUFFIX,omniroot.com
+  - DOMAIN-SUFFIX,onenote.com
+  - DOMAIN-SUFFIX,onenote.net
+  - DOMAIN-SUFFIX,onestore.ms
+  - DOMAIN-SUFFIX,outlook.com
+  - DOMAIN-SUFFIX,outlookmobile.com
+  - DOMAIN-SUFFIX,phonefactor.net
+  - DOMAIN-SUFFIX,public-trust.com
+  - DOMAIN-SUFFIX,sfbassets.com
+  - DOMAIN-SUFFIX,sfx.ms
+  - DOMAIN-SUFFIX,sharepoint.com
+  - DOMAIN-SUFFIX,sharepointonline.com
+  - DOMAIN-SUFFIX,skype.com
+  - DOMAIN-SUFFIX,skypeassets.com
+  - DOMAIN-SUFFIX,skypeforbusiness.com
+  - DOMAIN-SUFFIX,staffhub.ms
+  - DOMAIN-SUFFIX,svc.ms
+  - DOMAIN-SUFFIX,sway-cdn.com
+  - DOMAIN-SUFFIX,sway-extensions.com
+  - DOMAIN-SUFFIX,sway.com
+  - DOMAIN-SUFFIX,trafficmanager.net
+  - DOMAIN-SUFFIX,uservoice.com
+  - DOMAIN-SUFFIX,virtualearth.net
+  - DOMAIN-SUFFIX,visualstudio.com
+  - DOMAIN-SUFFIX,windows-ppe.net
+  - DOMAIN-SUFFIX,windows.com
+  - DOMAIN-SUFFIX,windows.net
+  - DOMAIN-SUFFIX,windowsazure.com
+  - DOMAIN-SUFFIX,wunderlist.com
+  - DOMAIN-SUFFIX,yammer.com
+  - DOMAIN-SUFFIX,yammerusercontent.com
+  
+  - DOMAIN-SUFFIX,teams.cdn.live.net
+  - DOMAIN-SUFFIX,teams.live.com
+  - DOMAIN-SUFFIX,teams.microsoft.com
+  - DOMAIN,teams.events.data.microsoft.com
+  - DOMAIN,statics.teams.cdn.office.net
 
 # MGTV 芒果TV
   - DOMAIN-SUFFIX,hitv.com
@@ -307,6 +399,15 @@
   - DOMAIN-SUFFIX,playstationnetwork.com
   - DOMAIN-SUFFIX,sony.com
   - DOMAIN-SUFFIX,sonyentertainmentnetwork.com
+  
+# Spotify
+  - PROCESS-NAME,com.spotify.music
+  - DOMAIN-SUFFIX,pscdn.co
+  - DOMAIN-SUFFIX,scdn.co
+  - DOMAIN-SUFFIX,spotify.com
+  - DOMAIN-SUFFIX,spoti.fi
+  - DOMAIN-KEYWORD,spotify.com
+  - DOMAIN-KEYWORD,-spotify-com
 
 # SteamCN
   - DOMAIN-SUFFIX,csgo.wmsj.cn
