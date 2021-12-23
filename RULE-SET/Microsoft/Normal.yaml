@@ -2,6 +2,7 @@
 # 已包含至 Domain 列表中
 
 payload:
+  - PROCESS-NAME,OneDrive
   - DOMAIN-SUFFIX,aadrm.com
   - DOMAIN-SUFFIX,acompli.com
   - DOMAIN-SUFFIX,acompli.ne
