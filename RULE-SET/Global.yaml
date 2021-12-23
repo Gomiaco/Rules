@@ -1,0 +1,10 @@
+# 从Domain中剔除的域名
+
+payload:
+  # > Apple
+  - DOMAIN,testflight.apple.com  
+  # > PayPal
+  # USER-AGENT,PayPal*
+  - DOMAIN-SUFFIX,paypal.com
+  - DOMAIN-SUFFIX,paypal.me
+  - DOMAIN-SUFFIX,paypalobjects.com
