@@ -1,4 +1,5 @@
 #  OneDrive
+# 已包含至 Global
 
 payload:
   - DOMAIN-SUFFIX,1drv.com
