@@ -1,0 +1,103 @@
+# General from lhie1
+port: 8888
+socks-port: 8889
+mixed-port: 8899
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: 127.0.0.1:6170
+experimental:
+  ignore-resolve-fail: true
+dns:
+  enable: true
+  # ipv6: false
+  # listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+    - 223.6.6.6
+  # interface-name: WLAN
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+    - 198.18.0.2:53
+  auto-route: true
+  auto-detect-interface: true
+
+proxy-providers:
+  ALL:
+    path: ./Proxy/All.yaml
+    type: http
+    url: #填入Clash订阅链接
+
+proxy-groups:
+  - name: Final
+    type: select
+    proxies:
+      - ALL
+      - DIRECT
+      
+  - name: TV
+    type: select
+    proxies:
+      - DIRECT
+      - HK
+      - TW
+      - Final
+      
+  - name: ALL
+    type: select
+    use:
+      - ALL
+
+rule-providers:
+  Reject:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Reject.yaml'
+    path: ./Rules/Reject
+    interval: 86400
+    
+  Global:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Global.yaml'
+    path: ./Rules/Global
+    interval: 86400
+    
+  ChineseTV:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Streaming/ChineseTV.yaml'
+    path: ./Rules/TV
+    interval: 86400
+    
+  Domain:
+    type: http
+    behavior: classical
+    url: 'https://cdn.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Domain.yaml'
+    path: ./Rules/Media/Netflix
+    interval: 86400
+    
+rules:
+  - RULE-SET,Reject,REJECT
+  
+  - DOMAIN-KEYWORD,scienbizip,DIRECT
+  
+  - RULE-SET,Global,Final
+  - RULE-SET,ChineseTV,TV
+  - RULE-SET,Domain,DIRECT
+  
+  # Local Area Network
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT
+  - IP-CIDR,224.0.0.0/4,DIRECT
+  - IP-CIDR,fe80::/10,DIRECT
+  
+  - MATCH,Final
+  
