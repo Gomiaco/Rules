@@ -37,6 +37,7 @@ proxy-groups:
     type: select
     proxies:
       - ALL
+      - PROXY #Shadowrocket 导入proxy-providers无法手动选择，引用PROXY策略在首页选择
       - DIRECT
       
   - name: TV
@@ -76,7 +77,7 @@ rule-providers:
     type: http
     behavior: classical
     url: 'https://cdn.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Domain.yaml'
-    path: ./Rules/Media/Netflix
+    path: ./Rules/Domain
     interval: 86400
     
 rules:
@@ -97,4 +98,5 @@ rules:
   - IP-CIDR,224.0.0.0/4,DIRECT
   - IP-CIDR,fe80::/10,DIRECT
   
+  - GEOIP,CN,DIRECT
   - MATCH,Final
