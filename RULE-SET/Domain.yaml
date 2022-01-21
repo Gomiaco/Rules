@@ -308,6 +308,18 @@ payload:
   - DOMAIN-SUFFIX,playstationnetwork.com
   - DOMAIN-SUFFIX,sony.com
   - DOMAIN-SUFFIX,sonyentertainmentnetwork.com
+  
+  # Spotify
+  # 数量：9条
+  # USER-AGENT,Spotify*
+  - DOMAIN-KEYWORD,-spotify-com
+  - DOMAIN-KEYWORD,spotify.com
+  - DOMAIN-SUFFIX,pscdn.co
+  - DOMAIN-SUFFIX,scdn.co
+  - DOMAIN-SUFFIX,spoti.fi
+  - DOMAIN-SUFFIX,spotify.com
+  - DOMAIN-SUFFIX,spotifycdn.com
+  - DOMAIN-SUFFIX,spotifycdn.net
 
   # SteamCN
   - DOMAIN-SUFFIX,csgo.wmsj.cn
@@ -879,20 +891,3 @@ payload:
   - IP-CIDR,173.194.175.188/32,no-resolve
   - IP-CIDR,173.194.218.188/32,no-resolve
   - IP-CIDR,209.85.233.188/32,no-resolve
-  
-  # 内容：SteamCN
-  # 数量：14条
-  - DOMAIN-SUFFIX,csgo.wmsj.cn
-  - DOMAIN-SUFFIX,dl.steam.ksyna.com
-  - DOMAIN-SUFFIX,dota2.wmsj.cn
-  - DOMAIN-SUFFIX,st.dl.bscstorage.net
-  - DOMAIN-SUFFIX,st.dl.eccdnx.com
-  - DOMAIN-SUFFIX,st.dl.pinyuncloud.com
-  - DOMAIN-SUFFIX,steamcommunity-a.akamaihd.net
-  - DOMAIN-SUFFIX,steamcontent.com
-  - DOMAIN-SUFFIX,steamgames.com
-  - DOMAIN-SUFFIX,steampowered.com.8686c.com
-  - DOMAIN-SUFFIX,steamstat.us
-  - DOMAIN-SUFFIX,steamstatic.com
-  - DOMAIN-SUFFIX,steamusercontent.com
-  - DOMAIN-SUFFIX,steamuserimages-a.akamaihd.net
