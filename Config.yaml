@@ -1,102 +1,79 @@
-# General from lhie1
-port: 8888
-socks-port: 8889
 mixed-port: 8899
-allow-lan: true
 mode: Rule
-log-level: info
-external-controller: 127.0.0.1:6170
-experimental:
-  ignore-resolve-fail: true
+
 dns:
   enable: true
-  # ipv6: false
-  # listen: 0.0.0.0:53
+  ipv6: false
   enhanced-mode: fake-ip
-  nameserver:
+  default-nameserver:
     - 119.29.29.29
-    - 223.5.5.5
-    - 223.6.6.6
-  # interface-name: WLAN
-tun:
-  enable: true
-  stack: system
-  dns-hijack:
-    - 198.18.0.2:53
-  auto-route: true
-  auto-detect-interface: true
+    - system
+  nameserver:
+    - https://doh.pub/dns-query
+    - system
 
 proxy-providers:
-  ALL:
-    path: ./Proxy/All.yaml
-    type: http
-    url: #填入Clash订阅链接
+  PROXY:
+    url: *
+    interval: 172800
+    health-check:
+      enable: true
+      interval: 6000
+      url: http://cp.cloudflare.com/generate_204
 
 proxy-groups:
-  - name: Final
-    type: select
-    proxies:
-      - ALL
-      - PROXY #Shadowrocket 导入proxy-providers无法手动选择，引用PROXY策略在首页选择
-      - DIRECT
-      
   - name: TV
     type: select
     proxies:
       - DIRECT
-      - Final
-      
-  - name: ALL
-    type: select
-    use:
-      - ALL
+      - PROXY
+  - name: PROXY
+  type: select
+  use:
+    - PROXY
 
 rule-providers:
-  Reject:
-    type: http
+  Unbreak:
+    behavior: domain-text
+    url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Unbreak.yaml'
+    interval: 172800
+  Advertising:
     behavior: classical
-    url: 'https://cdn.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Reject.yaml'
-    path: ./Rules/Reject
-    interval: 86400
-    
+    url: 'https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR/Clash/Providers/BanAD.yaml'
+    interval: 172800
+  IP:
+    behavior: ipcidr-text
+    url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/IP.yaml'
+    interval: 172800
+  Privacy:
+    behavior: domain-text
+    url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Privacy.yaml'
+    interval: 172800
   Global:
-    type: http
-    behavior: classical
-    url: 'https://cdn.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Global.yaml'
-    path: ./Rules/Global
-    interval: 86400
-    
-  ChineseTV:
-    type: http
-    behavior: classical
-    url: 'https://cdn.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Streaming/ChineseTV.yaml'
-    path: ./Rules/TV
-    interval: 86400
-    
-  Domain:
-    type: http
-    behavior: classical
-    url: 'https://cdn.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Domain.yaml'
-    path: ./Rules/Domain
-    interval: 86400
-    
+    behavior: domain-text
+    url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Privacy.yaml'
+    interval: 172800
+  StreamingSE:
+    behavior: domain-text
+    url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/StreamingSE.yaml'
+    interval: 172800
+  Domestic:
+    behavior: domain-text
+    url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Domestic.yaml'
+    interval: 172800
+
 rules:
-  - RULE-SET,Reject,REJECT
-  
+  - RULE-SET,Advertising,REJECT
+  - RULE-SET,IP,REJECT
+  - RULE-SET,Privacy,REJECT
   - DOMAIN-KEYWORD,scienbizip,DIRECT
-  
-  - RULE-SET,Global,Final
-  - RULE-SET,ChineseTV,TV
-  - RULE-SET,Domain,DIRECT
-  
-  # Local Area Network
-  - IP-CIDR,192.168.0.0/16,DIRECT
-  - IP-CIDR,10.0.0.0/8,DIRECT
-  - IP-CIDR,172.16.0.0/12,DIRECT
-  - IP-CIDR,127.0.0.0/8,DIRECT
-  - IP-CIDR,100.64.0.0/10,DIRECT
-  - IP-CIDR,224.0.0.0/4,DIRECT
-  - IP-CIDR,fe80::/10,DIRECT
-  
+  - DOMAIN-KEYWORD,ywsmi,DIRECT
+  - DOMAIN-KEYWORD,inquartik,DIRECT
+  - DOMAIN-KEYWORD,patentcloud,DIRECT
+  - DOMAIN-KEYWORD,wispro,DIRECT
+  - DOMAIN-SUFFIX,sapsf.com,DIRECT
+  - RULE-SET,Global,PROXY
+  - RULE-SET,StreamingSE,TV
+  - RULE-SET,Domestic,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,Final
+  - MATCH,ALL
