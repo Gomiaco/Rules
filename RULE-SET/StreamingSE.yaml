@@ -1,0 +1,24 @@
+# 国内流媒体
+# 转写自 https://github.com/DivineEngine/Profiles/blob/master/Surge/Ruleset/StreamingMedia/StreamingSE.list
+# 删除DOMAIN-KEYWORD和IP-CIDR规则
+# break: domain
+
+payload:
+# > bilibili
+  - api.biliapi.com
+  - api.biliapi.net
+  - api.bilibili.com
+  - app.biliapi.com
+  - app.biliapi.net
+  - app.bilibili.com
+  - grpc.biliapi.net
+  - m.bilibili.com
+  - upos-hz-mirrorakam.akamaized.net
+  - www.bilibili.com
+
+# > 愛奇藝台灣站
+  - cache.video.iqiyi.com
+
+# > MangoTV(芒果TV国际)
+  - +.api.mgtv.com
+  - mobileso.bz.mgtv.com
