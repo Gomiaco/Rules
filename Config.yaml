@@ -5,15 +5,13 @@ dns:
   enable: true
   ipv6: false
   enhanced-mode: fake-ip
-  default-nameserver:
-    - 119.29.29.29
-    - system
   nameserver:
-    - https://doh.pub/dns-query
-    - system
+    - 119.29.29.29
 
 proxy-providers:
-  PROXY:
+  ALL:
+    type: http
+    path: ./Sub.yaml
     url: *
     interval: 172800
     health-check:
@@ -28,52 +26,62 @@ proxy-groups:
       - DIRECT
       - PROXY
   - name: PROXY
-  type: select
-  use:
-    - PROXY
+    type: select
+    use:
+      - ALL
 
 rule-providers:
   Unbreak:
-    behavior: domain-text
+    type: http
+    path: ./Unbreak.yaml
+    behavior: domain
     url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Unbreak.yaml'
     interval: 172800
   Advertising:
-    behavior: classical
-    url: 'https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR/Clash/Providers/BanAD.yaml'
+    type: http
+    path: ./Ad.yaml
+    behavior: domain
+    url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Advertising.yaml'
     interval: 172800
-  IP:
-    behavior: ipcidr-text
-    url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/IP.yaml'
-    interval: 172800
-  Privacy:
-    behavior: domain-text
-    url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Privacy.yaml'
-    interval: 172800
-  Global:
-    behavior: domain-text
-    url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Privacy.yaml'
+  Streaming:
+    type: http
+    path: ./Str.yaml
+    behavior: domain
+    url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Streaming.yaml'
     interval: 172800
   StreamingSE:
-    behavior: domain-text
+    type: http
+    path: ./StrSE.yaml
+    behavior: domain
     url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/StreamingSE.yaml'
     interval: 172800
+  Global:
+    type: http
+    path: ./Global.yaml
+    behavior: domain
+    url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Global.yaml'
+    interval: 172800
   Domestic:
-    behavior: domain-text
+    type: http
+    path: ./Domestic.yaml
+    behavior: domain
     url: 'https://fastly.jsdelivr.net/gh/Gomiaco/Rules/RULE-SET/Domestic.yaml'
     interval: 172800
 
 rules:
-  - RULE-SET,Advertising,REJECT
-  - RULE-SET,IP,REJECT
-  - RULE-SET,Privacy,REJECT
   - DOMAIN-KEYWORD,scienbizip,DIRECT
   - DOMAIN-KEYWORD,ywsmi,DIRECT
   - DOMAIN-KEYWORD,inquartik,DIRECT
   - DOMAIN-KEYWORD,patentcloud,DIRECT
   - DOMAIN-KEYWORD,wispro,DIRECT
   - DOMAIN-SUFFIX,sapsf.com,DIRECT
-  - RULE-SET,Global,PROXY
+
+  - RULE-SET,Unbreak,DIRECT
+  - RULE-SET,Advertising,REJECT
+  - RULE-SET,Streaming,PROXY
   - RULE-SET,StreamingSE,TV
+  - RULE-SET,Global,PROXY
   - RULE-SET,Domestic,DIRECT
+
   - GEOIP,CN,DIRECT
-  - MATCH,ALL
+  - MATCH,PROXY
