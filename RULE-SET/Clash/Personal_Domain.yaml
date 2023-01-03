@@ -1,3 +1,4 @@
+payload:
 # Apple
 # NAME: Apple
 # AUTHOR: blackmatrix7
@@ -10,8 +11,8 @@
 # PROCESS-NAME: 6
 # USER-AGENT: 7
 # TOTAL: 486
-api.smoot.apple.cn
-apple-events.akamaized.net
+  - api.smoot.apple.cn
+  - apple-events.akamaized.net
   - +.akadns.net
   - +.apple-mapkit.com
   - +.apple.co
@@ -1070,42 +1071,42 @@ apple-events.akamaized.net
 # DOMAIN-SUFFIX: 12
 # USER-AGENT: 4
 # TOTAL: 53
-  - d.10010.com
-  - lt1-mtalk.google.com
-  - lt2-mtalk.google.com
-  - lt3-mtalk.google.com
-  - lt4-mtalk.google.com
-  - lt5-mtalk.google.com
-  - lt6-mtalk.google.com
-  - lt7-mtalk.google.com
-  - lt8-mtalk.google.com
-  - nalytics.95516.com
-  - nalytics.strava.com
-  - pp.adjust.com
-  - pp.appsflyer.com
-  - dtj.tagtic.cn
-  - lientservices.googleapis.com
-  - l.google.com
-  - l.l.google.com
-  - rrlog.umeng.com
-  - airplay.l.qq.com
-  - onts.googleapis.com
-  - onts.gstatic.com
-  - ivew.l.qq.com
-  - og.mmstat.com
-  - sg.umeng.com
-  - sg.umengcloud.com
-  - talk.google.com
-  - rigin-a.akamaihd.net
-  - icanalysis-auth.vivo.com.cn
-  - icanalysis.vivo.com.cn
-  - ewards.hypixel.net
-  - ycm.mmstat.com
-  - racking.miui.com
-  - pdate.googleapis.com
-  - d.l.qq.com
-  - i.l.qq.com
-  - ivanalysis.com
+  - ad.10010.com
+  - alt1-mtalk.google.com
+  - alt2-mtalk.google.com
+  - alt3-mtalk.google.com
+  - alt4-mtalk.google.com
+  - alt5-mtalk.google.com
+  - alt6-mtalk.google.com
+  - alt7-mtalk.google.com
+  - alt8-mtalk.google.com
+  - analytics.95516.com
+  - analytics.strava.com
+  - app.adjust.com
+  - app.appsflyer.com
+  - bdtj.tagtic.cn
+  - clientservices.googleapis.com
+  - dl.google.com
+  - dl.l.google.com
+  - errlog.umeng.com
+  - fairplay.l.qq.com
+  - fonts.googleapis.com
+  - fonts.gstatic.com
+  - livew.l.qq.com
+  - log.mmstat.com
+  - msg.umeng.com
+  - msg.umengcloud.com
+  - mtalk.google.com
+  - origin-a.akamaihd.net
+  - picanalysis-auth.vivo.com.cn
+  - picanalysis.vivo.com.cn
+  - rewards.hypixel.net
+  - sycm.mmstat.com
+  - tracking.miui.com
+  - update.googleapis.com
+  - vd.l.qq.com
+  - vi.l.qq.com
+  - xivanalysis.com
   - +.baomitu.com
   - +.blog.google
   - +.bootcss.com
