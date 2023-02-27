@@ -61,7 +61,7 @@ payload:
   - +.aria.ms
   - +.asp.net
   - +.aspnetcdn.com
-  - +.atom.io
+#  - +.atom.io
   - +.azcrmc-test.cn
   - +.azcrmc.cn
   - +.azk8s.cn
@@ -166,7 +166,7 @@ payload:
   - +.crmdynint-gcc.com
   - +.crmdynint.com
   - +.crossborderexpansion.com
-  - +.dependabot.com
+#  - +.dependabot.com
   - +.devopsassessment.net
   - +.devopsms.com
   - +.dictate.ms
@@ -192,21 +192,21 @@ payload:
   - +.gearspop.com
   - +.gearstactics.com
   - +.gfx.ms
-  - +.ghcr.io
+#  - +.ghcr.io
   - +.gigjam.com
-  - +.git.io
-  - +.github.blog
-  - +.github.com
-  - +.github.community
-  - +.github.dev
-  - +.github.io
-  - +.githubapp.com
-  - +.githubassets.com
-  - +.githubhackathon.com
-  - +.githubpreview.dev
-  - +.githubstatus.com
-  - +.githubuniverse.com
-  - +.githubusercontent.com
+#  - +.git.io
+#  - +.github.blog
+#  - +.github.com
+#  - +.github.community
+#  - +.github.dev
+#  - +.github.io
+#  - +.githubapp.com
+#  - +.githubassets.com
+#  - +.githubhackathon.com
+#  - +.githubpreview.dev
+#  - +.githubstatus.com
+#  - +.githubuniverse.com
+#  - +.githubusercontent.com
   - +.gotcosmos.com
   - +.graphengine.io
   - +.hdinsightservices.cn
@@ -416,11 +416,11 @@ payload:
   - +.msudalosti.com
   - +.msunlimitedcloudsummit.com
   - +.mymicrosoft.com
-  - +.myoctocat.com
+#  - +.myoctocat.com
   - +.nextechafrica.net
-  - +.npm.community
-  - +.npmjs.com
-  - +.npmjs.org
+#  - +.npm.community
+#  - +.npmjs.com
+#  - +.npmjs.org
   - +.nuget.org
   - +.nugettest.org
   - +.nxta.org
@@ -448,7 +448,7 @@ payload:
   - +.onenote.net
   - +.onestore.ms
   - +.onmschina.cn
-  - +.opensource.guide
+#  - +.opensource.guide
   - +.opentranslatorstothings.org
   - +.opticsforthecloud.net
   - +.orithegame.com
@@ -474,7 +474,7 @@ payload:
   - +.reactorms.com.cn
   - +.renovacionoffice.com
   - +.renovacionxboxlive.com
-  - +.repo.new
+#  - +.repo.new
   - +.s-microsoft.com
   - +.s-msft.com
   - +.s-msn.com
@@ -506,7 +506,7 @@ payload:
   - +.techhub.ms
   - +.tellmewhygame.com
   - +.tfsallin.net
-  - +.thegithubshop.com
+#  - +.thegithubshop.com
   - +.timelinestoryteller.com
   - +.trafficmanager.cn
   - +.trafficmanager.net
@@ -575,7 +575,7 @@ payload:
   - +.xbx.lv
   - +.yammer.com
   - default.exp-tas.com
-  - github-cloud.s3.amazonaws.com
+#  - github-cloud.s3.amazonaws.com
   - img-prod-cms-rt-microsoft-com.akamaized.net
   - img-s-msn-com.akamaized.net
   - mwf-service.akamaized.net
