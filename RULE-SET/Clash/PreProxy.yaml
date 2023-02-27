@@ -54,7 +54,7 @@ payload:
   - +.api-extractor.com
   - +.apihub-internal.cn
   - +.apisof.net
-  - +.appcenter.ms
+#  - +.appcenter.ms
   - +.applicationinsights.io
   - +.applicationinsights.net
   - +.appserviceenvironment.cn
