@@ -1,0 +1,40 @@
+payload:
+# Generated from https://github.com/v2fly/domain-list-community/tree/master/data/onedrive
+
+# Behavior: domain
+
+  - "+.1drv.com"
+  - "+.1drv.ms"
+  - "+.livefilestore.com"
+  - "+.onedrive.co"
+  - "+.onedrive.co.uk"
+  - "+.onedrive.com"
+  - "+.onedrive.eu"
+  - "+.onedrive.live.com"
+  - "+.onedrive.net"
+  - "+.onedrive.org"
+  - "+.storage.live.com"
+
+# NAME: AppleProxy
+# AUTHOR: blackmatrix7
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2023-02-15 23:45:37
+# DOMAIN: 9
+# DOMAIN-SUFFIX: 5
+# PROCESS-NAME: 1
+# TOTAL: 15
+
+  - api-glb-sea.smoot.apple.com
+  - books.itunes.apple.com
+  - cvws.icloud-content.com
+  - developer.apple.com
+  - hls.itunes.apple.com
+  - itunes.apple.com
+  - lookup-api.apple.com
+  - sandbox.itunes.apple.com
+  - testflight.apple.com
+  - +.apple-dns.net
+  - +.apps.apple.com
+  - +.appsto.re
+  - +.blobstore.apple.com
+  - +.digicert.com
