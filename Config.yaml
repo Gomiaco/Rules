@@ -11,7 +11,18 @@ dns:
     - 223.5.5.5
 
 proxy-providers:
-  DIRECT:
+  MESL:
+    type: http
+    ## 机场订阅链接，使用 Clash 链接
+    url: "https://911tg3rs.com/api/v1/client/subscribe?token=a5c98e74c61ba806664bdeb8951d87e0"
+    path: ./proxies/airport1.yaml
+    interval: 86400
+    ## 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，不筛选可删除此配置项
+    ## 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 600
 
 proxy-groups:
   ## 手动选择国家或地区节点；根据“国家或地区策略组”名称对 `proxies` 值进行增删改，须一一对应
@@ -34,17 +45,10 @@ rule-providers:
     path: ./ruleset/reject.yaml
     interval: 86400
 
-  icloud:
-    type: http
-    behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
-    path: ./ruleset/icloud.yaml
-    interval: 86400
-
   apple:
     type: http
     behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Domain.txt"
     path: ./ruleset/apple.yaml
     interval: 86400
 
@@ -139,7 +143,6 @@ rules:
   - RULE-SET,private,DIRECT
   - RULE-SET,reject,REJECT
   - RULE-SET,microsoft,DIRECT
-  - RULE-SET,icloud,DIRECT
   - RULE-SET,apple,DIRECT
   - RULE-SET,google,PROXY
   - RULE-SET,proxy,PROXY
