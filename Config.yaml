@@ -48,7 +48,8 @@ rule-providers:
   apple:
     type: http
     behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Domain.txt"
+    format: text
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Domain_For_Clash.txt"
     path: ./ruleset/apple.yaml
     interval: 86400
 
