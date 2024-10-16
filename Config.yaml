@@ -1,11 +1,3 @@
-geodata-mode: true
-geox-url:
-  geosite: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash/geosite-all.dat"
-  geoip: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash/geoip-all.dat"
-  mmdb: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash/Country-all.mmdb"
-geo-auto-update: true
-geo-update-interval: 24
-
 dns:
   enable: true
   prefer-h3: true
@@ -13,88 +5,141 @@ dns:
   listen: 0.0.0.0:1053
   fake-ip-range: 198.18.0.1/16
   enhanced-mode: fake-ip
-  fake-ip-filter: [geosite:fakeip-filter]
+  fake-ip-filter: [rule-set:fakeip-filter]
   nameserver:
     - system
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
+    - 223.5.5.5
 
-## 代理集合（获取机场订阅链接内的所有节点）
 proxy-providers:
-  MESL:
-    type: http
-    ## 机场订阅链接，使用 Clash 链接
-    url: "https://911tg3rs.com/api/v1/client/subscribe?token=a5c98e74c61ba806664bdeb8951d87e0"
-    path: ./proxies/airport1.yaml
-    interval: 86400
-    ## 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，不筛选可删除此配置项
-    ## 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 600
-    override:
-      ## 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 我的机场 1-香港节点”；推荐有多个机场时使用
-      additional-prefix: "MESL - "
+  DIRECT:
 
-  EFCLOUD:
-    type: http
-    url: "https://fctahfbxlk.eastasia.cloudapp.azure.com/queue/list?token=db3e048e8190b8c2d8379aabe251dfea"
-    path: ./proxies/airport2.yaml
-    interval: 86400
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 600
-    override:
-      ## 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 我的机场 2-香港节点”；推荐有多个机场时使用
-      additional-prefix: "EF - "
-
-## 策略组
 proxy-groups:
   ## 手动选择国家或地区节点；根据“国家或地区策略组”名称对 `proxies` 值进行增删改，须一一对应
-  - {name: 🚀 节点选择, type: select, include-all-providers: true, include-all: true}
+  - {name: PROXY, type: select, include-all: true}
   ## 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
-  - {name: 📺 哔哩哔哩, type: select, proxies: [🎯 全球直连, 🇭🇰 香港节点, 🇹🇼 台湾节点]}
-  - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
-  ## 选择`🎯 全球直连`为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
-  - {name: 📈 网络测试, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
-  - {name: 🤖 人工智能, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
-  - {name: 🎮 游戏服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🪟 微软服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🇬 谷歌服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🍎 苹果服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🇨🇳 直连域名, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🇨🇳 直连 IP, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🪜 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
-  - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择]}
-  - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连]}
-  - {name: 🛑 广告拦截, type: select, proxies: [REJECT]}
-  - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
+  - {name: Bilibili, type: select, proxies: [DIRECT, HKS, TWS]}
 
   ## ----------------国家或地区策略组---------------------
   ## 自动选择节点，即按照 url 测试结果使用延迟最低的节点；测试后容差大于 50ms 才会切换到延迟低的那个节点；筛选出“香港”节点，支持正则表达式
-  - {name: 🇭🇰 香港节点, type: select, include-all-providers: true, include-all: true, filter: "(?i)港|hk|hongkong|hong kong"}
+  - {name: HKS, type: select, include-all: true, filter: "(?i)港|hk|hongkong|hong kong"}
   ## 节点负载均衡，即将请求均匀分配到多个节点上，优点是更稳定，速度可能有提升；将相同顶级域名的请求分配给策略组内的同一个代理节点；推荐在节点复用比较多的情况下使用
-  - {name: 🇹🇼 台湾节点, type: select, include-all-providers: true, include-all: true, filter: "(?i)台|tw|taiwan"}
+  - {name: TWS, type: select, include-all: true, filter: "(?i)台|tw|taiwan"}
   ## 可使用 `include-all-providers: true` 代替 `use: [🛫 我的机场 1, 🛫 我的机场 2, ...]`，意思为引入所有代理集合
 
-## 规则
+rule-providers:
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+
+  apple:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  google:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+
+  direct:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+
+  applications:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+
+  fakeip-filter:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/fakeip-filter.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/fakeip-filter.mrs"
+    interval: 86400
+
 rules:
-  ## 自定义规则优先放前面
-  ## 为了使 P2P 流量（BT 下载）走直连，可添加一条 `DST-PORT` 规则（ShellCrash 会默认开启“只代理常用端口”，可删除此条 `DST-PORT`）
-  - GEOSITE,private,🔒 私有网络
-  - GEOSITE,ads,🛑 广告拦截
-  - GEOSITE,bilibili,📺 哔哩哔哩
-  - GEOSITE,microsoft-cn,🪟 微软服务
-  - GEOSITE,apple-cn,🍎 苹果服务
-  - GEOSITE,google-cn,🇬 谷歌服务
-  - GEOSITE,games-cn,🎮 游戏服务
-  - GEOSITE,ai,🤖 人工智能
-  - GEOSITE,networktest,📈 网络测试
-  - GEOSITE,proxy,🪜 代理域名
-  - GEOSITE,cn,🇨🇳 直连域名
-  - GEOIP,telegram,📲 电报消息,no-resolve
-  - GEOIP,private,🔒 私有网络,no-resolve
-  - GEOIP,cn,🇨🇳 直连 IP
-  - MATCH,🐟 漏网之鱼
+  - RULE-SET,applications,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,google,PROXY
+  - RULE-SET,proxy,PROXY
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,DIRECT
+  - RULE-SET,telegramcidr,PROXY
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,PROXY
